@@ -1,0 +1,17 @@
+# Virtual envoriment 
+.venv
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.py[cod]
+
+# Editable install
+*.egg-info/
+
+# VS Code
+.vscode/
+
+#macOS
+.DS_Store

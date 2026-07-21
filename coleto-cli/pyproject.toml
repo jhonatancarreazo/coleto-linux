@@ -1,10 +1,10 @@
 [project]
-name = "coleto"
+name = "coleto-cli"
 version = "0.1.0"
 description = "Coleto CLI para Coleto Linux"
-authors = [{
-    name = "Jhonatan Carreazo"
-}]
+authors = [
+    { name = "Jhonatan Carreazo"}
+]
 readme = "README.md"
 requires-python = ">=3.12"
 
@@ -14,4 +14,4 @@ dependencies = [
 ]
 
 [project.scripts]
-coleto = "coleto:app"
+coleto = "coleto.main:app"
