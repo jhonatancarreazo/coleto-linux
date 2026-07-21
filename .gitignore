@@ -1,5 +1,5 @@
 # Virtual envoriment 
-.venv
+.venv/
 
 # Python
 __pycache__/
@@ -12,6 +12,9 @@ __pycache__/
 
 # VS Code
 .vscode/
+
+# Packaging
+*.egg-info/
 
 #macOS
 .DS_Store
