@@ -1,7 +1,9 @@
 import typer
 from rich.console import Console
-
+from coleto.commands import doctor
 from coleto.ui.banner import get_banner
+
+
 
 app = typer.Typer(
     help="Coleto Linux CLI"
@@ -15,6 +17,11 @@ def main(ctx: typer.Context):
         console.print(get_banner())
         console.print()
         console.print("[yellow]Escribe:[/yellow] coleto --help")
+
+@app.command(name="doctor")
+def doctor_cmd():
+    """Muestra información del sistema."""
+    doctor.run()
 
 
 if __name__ == "__main__":
