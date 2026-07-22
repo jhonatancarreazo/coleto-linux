@@ -1,9 +1,10 @@
 import typer
 from rich.console import Console
-from coleto.commands import doctor
+
+
 from coleto.ui.banner import get_banner
-
-
+from coleto.commands.buscar import run as buscar_run
+from coleto.commands.doctor import run as doctor_run
 
 app = typer.Typer(
     help="Coleto Linux CLI"
@@ -21,7 +22,12 @@ def main(ctx: typer.Context):
 @app.command(name="doctor")
 def doctor_cmd():
     """Muestra información del sistema."""
-    doctor.run()
+    doctor_run()
+
+@app.command()
+def buscar(query: str):
+    """Busca paquetes disponibles"""
+    buscar_run(query)
 
 
 if __name__ == "__main__":
