@@ -7,6 +7,7 @@ from coleto.commands.buscar import run as buscar_run
 from coleto.commands.doctor import run as doctor_run
 from coleto.commands.instalar import run as install_run
 from coleto.commands.eliminar import run as remove_run
+from coleto.commands.actualizar import run as update_run
 
 app = typer.Typer(
     help="Coleto Linux CLI"
@@ -44,6 +45,13 @@ def eliminar(package: str):
     Elimina un paquete instalado
     """
     remove_run(package)
+
+@app.command("actualizar")
+def actualizar():
+    """
+    Actualizar la lista de paquetes.
+    """
+    update_run()
 
 if __name__ == "__main__":
     app()

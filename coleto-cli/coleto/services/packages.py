@@ -114,3 +114,14 @@ def remove_package(package: str) -> bool:
         return apt.remove(package)
 
     return False
+
+def update_packages() -> bool:
+    """
+    Actualiza la lista de paquetes utilizando el gestor de paqutes detectado.
+    """
+    manager = get_package_manager()
+
+    if manager == "apt":
+        return apt.update()
+    
+    return False

@@ -101,3 +101,22 @@ def remove(package: str) -> bool:
 
     except Exception:
         return False
+
+def update() -> bool:
+    """
+    Actualiza la lista de paquetes usandoAPT.
+    """
+    try:
+        result = subprocess.run(
+            [
+                "sudo",
+                "apt",
+                "update",
+            ],
+            timeout=600,
+        )
+
+        return result.returncode == 0
+
+    except Exception:
+        return False
