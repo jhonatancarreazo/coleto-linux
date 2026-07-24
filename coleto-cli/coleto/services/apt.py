@@ -80,3 +80,24 @@ def install(package: str) -> bool:
     
     except Exception:
         return False
+    
+def remove(package: str) -> bool:
+    """
+    Elimina un paquete utilizando APT.
+    """
+    try:
+        result = subprocess.run(
+            [
+                "sudo",
+                "apt",
+                "remove",
+                "-y",
+                package,
+            ],
+            timeout=300,
+        )
+
+        return result.returncode == 0
+
+    except Exception:
+        return False

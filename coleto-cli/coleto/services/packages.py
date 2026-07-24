@@ -100,3 +100,17 @@ def install_package(package: str) -> bool:
         return apt.install(package)
     
     return False
+
+
+def remove_package(package: str) -> bool:
+    """
+    Elimina un paquete utilizando el gestor detectado.
+    """
+
+    manager = get_package_manager()
+
+    if manager == "apt":
+        from coleto.services import apt
+        return apt.remove(package)
+
+    return False
