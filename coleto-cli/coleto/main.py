@@ -8,6 +8,7 @@ from coleto.commands.doctor import run as doctor_run
 from coleto.commands.instalar import run as install_run
 from coleto.commands.eliminar import run as remove_run
 from coleto.commands.actualizar import run as update_run
+from coleto.commands.listar import run as list_run
 
 app = typer.Typer(
     help="Coleto Linux CLI"
@@ -52,6 +53,13 @@ def actualizar():
     Actualizar la lista de paquetes.
     """
     update_run()
+
+@app.command("listar")
+def listar(tipo: str):
+    """
+    Lista paquetes del sistema.
+    """
+    list_run(tipo)
 
 if __name__ == "__main__":
     app()

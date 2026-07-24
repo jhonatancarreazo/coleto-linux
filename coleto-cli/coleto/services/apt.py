@@ -59,6 +59,61 @@ def _parse_search_output(output: str) -> list[Package]:
 
     return packages
 
+def _parse_list_output(output: str) -> list[Package]:
+    """
+    Convierte la salida de `apt list --installed`
+    en una lista de Package.
+    """
+
+    packages: list[Package] = []
+
+    for line in output.splitlines():
+
+        line = line.strip()
+
+        if (
+            not line
+            or line.startswith("Listing...")
+            or "/" not in line
+        ):
+            continue
+
+        name = line.split("/")[0]
+
+        packages.append(
+            Package(
+                name=name,
+                description="Instalado",
+            )
+        )
+
+    return packages
+
+
+def list_installed() -> list[Package]:
+    """
+    Obtiene la lista de paquetes instalados mediante APT.
+    """
+    try:
+        result = subprocess.run(
+            [
+                "apt",
+                "list",
+                "--installed",
+            ],
+            capture_output=True,
+            text=True,
+            timeout=15,
+        )
+
+        if result.returncode != 0:
+            return []
+
+        return _parse_list_output(result.stdout)
+
+    except Exception:
+        return []
+
 def install(package: str) -> bool:
     """
     Instala un paquete usando APT.
