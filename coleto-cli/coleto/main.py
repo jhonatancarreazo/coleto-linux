@@ -55,11 +55,15 @@ def actualizar():
     update_run()
 
 @app.command("listar")
-def listar(tipo: str):
+def listar(
+    tipo: str,
+    buscar: str | None = None,
+    limitar: int = 20,
+    ):
     """
     Lista paquetes del sistema.
     """
-    list_run(tipo)
+    list_run(tipo, buscar, limitar)
 
 if __name__ == "__main__":
     app()

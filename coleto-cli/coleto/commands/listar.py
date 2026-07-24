@@ -2,24 +2,37 @@ from rich.console import Console
 from rich.table import Table
 
 from coleto.services.packages import list_installed_packages
+from coleto.services.utils import filter_packages
 
 console = Console()
 
 
-def run(mode: str) -> None:
+def run(
+    mode: str,
+    buscar: str | None = None,
+    limitar: int = 20,
+) -> None:
 
     if mode == "instalados":
         packages = list_installed_packages()
-
     else:
-        console.print("[red]Modo no soportado.[/red]")
+        # Error de modo
+        console.print("[red]¡Papi, tas miando fuera del tiesto! Ese modo no existe.[/red]")
         return
+
+    packages = filter_packages(
+    packages,
+    search=buscar,
+    limit=limitar,
+)
 
     if not packages:
-        console.print("[yellow]No se encontraron paquetes.[/yellow]")
+        # No se encontró nada
+        console.print("[yellow]¡Firme! Pero no encontré ni un solo paquete por ahí.[/yellow]")
         return
 
-    table = Table(title="📦 Paquetes instalados")
+    # Título de la tabla con flow
+    table = Table(title="📦 El tierrero de paquetes instalados")
 
     table.add_column("Nombre", style="cyan")
     table.add_column("Estado", style="green")
@@ -31,3 +44,8 @@ def run(mode: str) -> None:
         )
 
     console.print(table)
+
+    # Conteo de resultados
+    console.print(
+        f"\nTe tiré en la cara {len(packages)} resultado(s), cuadro."
+    )
