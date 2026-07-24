@@ -43,6 +43,7 @@ def eliminar(package: str):
     """
     Elimina un paquete instalado
     """
+    remove_run(package)
 
 if __name__ == "__main__":
     app()
