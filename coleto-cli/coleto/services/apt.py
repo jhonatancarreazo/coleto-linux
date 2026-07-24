@@ -58,3 +58,25 @@ def _parse_search_output(output: str) -> list[Package]:
         i += 1
 
     return packages
+
+def install(package: str) -> bool:
+    """
+    Instala un paquete usando APT.
+    """
+
+    try:
+        result = subprocess.run(
+            [
+            "sudo",
+            "apt",
+            "install",
+            "-y",
+            package,
+            ],
+            timeout=600,
+        )
+
+        return result.returncode == 0
+    
+    except Exception:
+        return False

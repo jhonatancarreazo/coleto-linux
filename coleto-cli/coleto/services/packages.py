@@ -88,3 +88,15 @@ def search_package(query: str) -> list[Package]:
         return apt.search(query)
 
     return []
+
+def install_package(package: str) -> bool:
+    """
+    Instala un paquete utilizando el gestor de paquetes detectado
+    """
+
+    manager = get_package_manager()
+    
+    if manager == "apt":
+        return apt.install(package)
+    
+    return False
