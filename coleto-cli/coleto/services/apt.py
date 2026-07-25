@@ -194,3 +194,92 @@ def upgrade() -> bool:
 
     except Exception:
         return False
+    
+def autoremove() -> bool:
+        """
+        Elimina dependencias que ya no son necesarias usando APT.
+        """
+        try:
+            result = run_privileged(
+                [
+                    "apt",
+                    "autoremove",
+                    "-y",
+                ],
+                timeout=1800,
+            )
+
+            return result.returncode == 0
+
+        except Exception:
+            return False
+
+
+def clean() -> bool:
+    """
+    Limpia la caché de paquetes de APT.
+    """
+    try:
+        result = run_privileged(
+            [
+                "apt",
+                "clean",
+            ],
+            timeout=600,
+        )
+
+        return result.returncode == 0
+
+    except Exception:
+        return False
+    
+
+
+def info(package: str) -> Package | None:
+    """
+    Obtiene informacion detallada de un paquete.
+    """
+    try:
+        result = subprocess.run(
+            ["apt",
+             "show",
+             package],
+            capture_output=True,
+            text=True,
+            timeout=10,
+        )
+        # Si el comando falla (paquete no encontrado), retorna None
+        if result.returncode != 0:
+            return None
+            
+        # Conecta con la función de parseo pasándole la salida limpia
+        return _parse_show_output(result.stdout)
+        
+    except (subprocess.TimeoutExpired, FileNotFoundError):
+        return None
+    
+def _parse_show_output(output: str) -> Package:
+    """
+    Convierte la salida de `apt show` en un objeto Package.
+    """
+
+    fields: dict[str, str] = {}
+
+    for line in output.splitlines():
+
+        if ":" not in line:
+            continue
+
+        key, value = line.split(":", 1)
+
+        fields[key.strip()] = value.strip()
+
+    return Package(
+        name=fields.get("Package", ""),
+        version=fields.get("Version", ""),
+        architecture=fields.get("Architecture", ""),
+        maintainer=fields.get("Maintainer", ""),
+        installed_size=fields.get("Installed-Size", ""),
+        repository=fields.get("APT-Sources", ""),
+        description=fields.get("Description", ""),
+    )

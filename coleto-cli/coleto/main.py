@@ -9,7 +9,10 @@ from coleto.commands.eliminar import run as remove_run
 from coleto.commands.actualizar import run as update_run
 from coleto.commands.upgrade import run as upgrade_run
 from coleto.commands.listar import run as list_run
+from coleto.commands.info import run as info_run
 from coleto.commands.ayuda import run as ayuda_run
+from coleto.commands.autoremove import run as autoremove_run
+from coleto.commands.limpiar import run as limpiar_run
 
 app = typer.Typer(
     help="Coleto Linux CLI"
@@ -72,6 +75,22 @@ def listar(
     """
     list_run(tipo, buscar, limitar)
 
+
+@app.command("autoremove")
+def autoremove():
+    """
+    Elimina dependencias que ya no son necesarias.
+    """
+    autoremove_run()
+
+@app.command("limpiar")
+def clean():
+    """
+    Limpia la caché de paquetes.
+    """
+    limpiar_run()
+
+
 @app.command("ayuda")
 def ayuda():
     """
@@ -79,6 +98,12 @@ def ayuda():
     """
     ayuda_run()
 
+@app.command("info")
+def info(package: str):
+    """
+    Muestra información detallada de un paquete.
+    """
+    info_run(package)
    
 
    

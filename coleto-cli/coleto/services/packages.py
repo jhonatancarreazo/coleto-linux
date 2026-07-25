@@ -8,6 +8,7 @@ from coleto.services.apt import upgrade
 
 
 
+
 def has_apt() -> bool:
     if platform.system() != "Linux":
         return False
@@ -143,3 +144,39 @@ def update_packages() -> bool:
 def upgrade_packages() -> bool:
     return upgrade()
 
+
+def autoremove_packages() -> bool:
+    """
+    Elimina dependencias innecesarias utilizando el gestor detectado.
+    """
+
+    manager = get_package_manager()
+
+    if manager == "apt":
+        return apt.autoremove()
+
+    return False
+
+
+def clean_packages() -> bool:
+    """
+    Limpia la caché utilizando el gestor detectado.
+    """
+
+    manager = get_package_manager()
+
+    if manager == "apt":
+        return apt.clean()
+
+    return False
+
+def package_info(package: str) -> Package | None:
+    """
+    Obtiene la información detallada de un paquete delegando en apt.
+    """
+    manager = get_package_manager()
+    
+    if manager == "apt":
+        return apt.info(package)
+        
+    return None
