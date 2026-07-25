@@ -4,6 +4,7 @@ import platform
 
 from coleto.models.packages import Package
 from coleto.services import apt
+from coleto.services.apt import upgrade
 
 
 
@@ -138,3 +139,7 @@ def update_packages() -> bool:
         return apt.update()
     
     return False
+
+def upgrade_packages() -> bool:
+    return upgrade()
+

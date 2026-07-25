@@ -1,6 +1,7 @@
 import subprocess
 
 from coleto.models.packages import Package
+from coleto.services.runner import run_privileged
 
 
 def search(query: str) -> list[Package]:
@@ -120,14 +121,15 @@ def install(package: str) -> bool:
     """
 
     try:
-        result = subprocess.run(
+        result = run_privileged(
             [
-            "sudo",
+
             "apt",
             "install",
             "-y",
             package,
             ],
+
             timeout=600,
         )
 
@@ -141,9 +143,8 @@ def remove(package: str) -> bool:
     Elimina un paquete utilizando APT.
     """
     try:
-        result = subprocess.run(
+        result = run_privileged(
             [
-                "sudo",
                 "apt",
                 "remove",
                 "-y",
@@ -162,13 +163,31 @@ def update() -> bool:
     Actualiza la lista de paquetes usandoAPT.
     """
     try:
-        result = subprocess.run(
+        result = run_privileged(
             [
-                "sudo",
                 "apt",
                 "update",
             ],
             timeout=600,
+        )
+
+        return result.returncode == 0
+
+    except Exception:
+        return False
+    
+def upgrade() -> bool:
+    """
+    Actualiza todos los paquetes instalados usando APT.
+    """
+    try:
+        result = run_privileged(
+            [
+                "apt",
+                "upgrade",
+                "-y",
+            ],
+            timeout=1800,
         )
 
         return result.returncode == 0

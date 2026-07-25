@@ -1,16 +1,13 @@
 import typer
-from rich.console import Console
 
 from coleto.interactive import run as interactive_run
-from coleto.ui.banner import get_banner
-from coleto.ui.menu import show_menu
-from coleto.ui.interactive import ask_option
-from coleto.ui.actions import execute
+
 from coleto.commands.buscar import run as buscar_run
 from coleto.commands.doctor import run as doctor_run
 from coleto.commands.instalar import run as install_run
 from coleto.commands.eliminar import run as remove_run
 from coleto.commands.actualizar import run as update_run
+from coleto.commands.upgrade import run as upgrade_run
 from coleto.commands.listar import run as list_run
 from coleto.commands.ayuda import run as ayuda_run
 
@@ -18,7 +15,6 @@ app = typer.Typer(
     help="Coleto Linux CLI"
 )
 
-console = Console()
 
 @app.callback(invoke_without_command=True)
 def main(ctx: typer.Context):
@@ -57,6 +53,13 @@ def actualizar():
     Actualizar la lista de paquetes.
     """
     update_run()
+
+@app.command("upgrade")
+def upgrade():
+    """
+    Actualiza todos los paquetes instalados.
+    """
+    upgrade_run()
 
 @app.command("listar")
 def listar(
