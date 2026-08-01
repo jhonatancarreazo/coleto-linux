@@ -156,6 +156,18 @@ Las ideas, sugerencias y reportes de errores son bienvenidos.
 
 ---
 
+## 📷 Capturas de pantalla
+
+| Menú Interactivo | Ayuda del CLI |
+| :---: | :---: |
+| ![Menú Interactivo](assets/coleto-menu.png) | ![Ayuda](assets/coleto-ayuda.png) |
+
+| Información de Paquetes | Listado de Paquetes |
+| :---: | :---: |
+| ![Información](assets/coleto-info.png) | ![Listar Instalados](assets/coleto-listar.png) |
+
+---
+
 ## 📄 Licencia
 
 Este proyecto está bajo la Licencia **GNU General Public License v3.0 (GPL-3.0)**. Consulta el archivo [LICENSE](LICENSE) para más detalles.
