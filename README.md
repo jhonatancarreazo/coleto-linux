@@ -158,4 +158,4 @@ Las ideas, sugerencias y reportes de errores son bienvenidos.
 
 ## 📄 Licencia
 
-Pendiente.
+Este proyecto está bajo la Licencia **GNU General Public License v3.0 (GPL-3.0)**. Consulta el archivo [LICENSE](LICENSE) para más detalles.
