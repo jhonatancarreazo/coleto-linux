@@ -160,11 +160,11 @@ Las ideas, sugerencias y reportes de errores son bienvenidos.
 
 | Menú Interactivo | Ayuda del CLI |
 | :---: | :---: |
-| ![Menú Interactivo](assets/coleto-menu.png) | ![Ayuda](assets/coleto-ayuda.png) |
+| ![Menú Interactivo](assets/coleto.png) | ![Ayuda](assets/coleto-ayuda.png) |
 
 | Información de Paquetes | Listado de Paquetes |
 | :---: | :---: |
-| ![Información](assets/coleto-info.png) | ![Listar Instalados](assets/coleto-listar.png) |
+| ![Información](assets/coleto-info.png) | ![Listar Instalados](assets/coleto-listar-instalados.png) |
 
 ---
 
