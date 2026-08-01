@@ -16,6 +16,8 @@ __pycache__/
 #macOS
 .DS_Store
 
+*.substvars
+
 # Archivos de compilación de Python
 __pycache__/
 *.pyc
