@@ -1,0 +1,29 @@
+Source: coleto-cli
+Section: utils
+Priority: optional
+Maintainer: Jhonatan Carreazo <jhonatan.carreazoa@gmail.com>
+Build-Depends:
+ debhelper-compat (= 13),
+ dh-python,
+ python3-all,
+ python3-setuptools,
+ python3-installer,
+ pybuild-plugin-pyproject,
+ python3-typer,
+ python3-rich,
+ python3-psutil
+Standards-Version: 4.7.2
+Rules-Requires-Root: no
+
+Package: coleto-cli
+Architecture: all
+Depends:
+ ${misc:Depends},
+ ${python3:Depends},
+ python3-typer,
+ python3-rich,
+ python3-psutil
+Description: Coleto CLI for Coleto Linux
+ Coleto CLI es una herramienta de línea de comandos moderna para
+ Coleto Linux. Incluye utilidades para diagnóstico del sistema,
+ administración y automatización, desarrollada con Python y Typer.

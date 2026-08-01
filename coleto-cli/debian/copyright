@@ -1,0 +1,7 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: coleto-cli
+Source: https://github.com/jhonatancarreazo/coleto-linux
+
+Files: *
+Copyright: 2026 Jhonatan Carreazo <jhonatan.carreazoa@gmail.com>
+License: GPL-3.0-or-later

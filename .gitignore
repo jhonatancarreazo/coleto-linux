@@ -15,3 +15,39 @@ __pycache__/
 
 #macOS
 .DS_Store
+
+# Archivos de compilación de Python
+__pycache__/
+*.pyc
+coleto-cli/.pybuild/
+coleto-cli/build/
+coleto-cli/dist/
+coleto-cli/*.egg-info/
+coleto-cli/estdir=test-install/
+coleto-cli/test-install/
+
+# Archivos temporales de empaquetado Debian
+*.deb
+*.build
+*.buildinfo
+*.changes
+*.dsc
+*.tar.xz
+coleto-cli/debian/coleto-cli/
+coleto-cli/debian/*.debhelper
+coleto-cli/debian/debhelper-build-stamp
+coleto-cli/debian/files
+coleto-cli/debian/substvars
+
+# Archivos temporales de live-build e ISOs
+live-build/.build/
+live-build/binary/
+live-build/cache/
+live-build/chroot/
+live-build/chroot.*
+live-build/binary.modified_timestamps
+live-build/config/packages.chroot/*.deb
+live-build/live-image-amd64.*
+
+# Archivos temporales locales
+estructura.txt

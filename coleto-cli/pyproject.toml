@@ -10,7 +10,8 @@ requires-python = ">=3.12"
 
 dependencies = [
     "typer>=0.16",
-    "rich>=14.0"
+    "rich>=14.0",
+    "psutil"
 ]
 
 [project.scripts]

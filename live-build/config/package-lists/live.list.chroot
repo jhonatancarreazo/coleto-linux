@@ -2,3 +2,8 @@ live-boot
 live-config
 live-config-systemd
 systemd-sysv
+python3
+python3-pip
+python3-rich
+python3-typer
+git
