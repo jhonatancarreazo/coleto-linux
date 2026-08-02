@@ -2,7 +2,7 @@
 
 ![Version](https://img.shields.io/badge/version-v0.2.0-blue)
 ![Python](https://img.shields.io/badge/python-3.12+-green)
-
+![License: GPL v3](https://img.shields.io/badge/License-GNU_GPL_v3-blue)
 > **Ligero, bacano y estable.**
 
 Coleto Linux es una distribución GNU/Linux basada en Debian que busca ofrecer una experiencia moderna, ligera y amigable, manteniendo la estabilidad del ecosistema Debian mientras desarrolla una identidad propia.
