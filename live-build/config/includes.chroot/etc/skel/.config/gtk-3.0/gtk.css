@@ -1,0 +1,52 @@
+/* ==========================================
+   Coleto Linux - Tema GTK3 (Coleto-Dark)
+   Inspirado en la Costa Caribe Colombiana
+   ========================================== */
+
+@define-color bg_dark #16213E;        /* Azul Caribe Nocturno */
+@define-color bg_element #1F2945;    /* Azul secundario para paneles/tarjetas */
+@define-color turquesa #00B8A9;      /* Turquesa Caribe (Acentos/Selección) */
+@define-color coral #FF6B4A;         /* Coral Costeño (Botones de alerta/especiales) */
+@define-color arena #F4C95D;         /* Arena Dorada (Detalles y highlights) */
+@define-color text_light #F8F9FA;    /* Blanco Marfil */
+@define-color text_dark #2F3640;     /* Gris Grafito */
+
+/* Ventanas y fondos generales */
+window, .background {
+    background-color: @bg_dark;
+    color: @text_light;
+}
+
+/* Botones por defecto */
+button {
+    background-color: @bg_element;
+    color: @text_light;
+    border: 1px solid rgba(0, 184, 169, 0.3);
+    border-radius: 4px;
+}
+
+/* Botones al pasar el mouse (Hover) */
+button:hover {
+    background-color: @turquesa;
+    color: @text_dark;
+    border-color: @turquesa;
+}
+
+/* Botones principales de acción */
+button.suggested-action {
+    background-color: @coral;
+    color: @text_light;
+    font-weight: bold;
+}
+
+/* Elementos seleccionados en menús y listas */
+selected, row:selected, menuitem:hover {
+    background-color: @turquesa;
+    color: @text_dark;
+}
+
+/* Barras de desplazamiento (Scrollbars) */
+scrollbar slider {
+    background-color: @turquesa;
+    border-radius: 4px;
+}
